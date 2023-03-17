@@ -20,9 +20,7 @@
   text-transform: uppercase;
   font-weight: 900;
   letter-spacing: 2px;
-
   color: var(--main-text-color);
-
   padding-top: 100px;
   padding-bottom: 100px;
 }
@@ -36,6 +34,5 @@
   text-transform: uppercase;
   font-weight: 900;
   color: var(--main-text-color);
-
   margin-bottom: 30px;
 }
