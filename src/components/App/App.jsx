@@ -5,6 +5,7 @@ import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import Filter from './Filter';
 import Message from './Message';
+import contacts from '../../contacts.json';
 import css from './App.module.css';
 
 export class App extends Component {
@@ -12,6 +13,23 @@ export class App extends Component {
     contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    const savedContacts = localStorage.getItem('contacts');
+
+    if (savedContacts !== null) {
+      this.setState({ contacts: JSON.parse(savedContacts) });
+      return;
+    }
+
+    this.setState({ contacts: contacts });
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
 
   addContact = ({ name, number }) => {
     const { contacts } = this.state;
@@ -75,5 +93,3 @@ export class App extends Component {
     );
   }
 }
-
-// export default App;
